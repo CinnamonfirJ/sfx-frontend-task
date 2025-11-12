@@ -54,7 +54,7 @@ const PaymentIssuesChart = () => {
               dataKey='category'
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "#9CA3AF", fontSize: 12 }}
+              tick={{ fill: "#BDBDBD", fontSize: 12 }}
             />
             <YAxis hide />
 
@@ -71,7 +71,7 @@ const PaymentIssuesChart = () => {
                 dataKey='value'
                 position='top'
                 formatter={(value: string) => value.toLocaleString()}
-                style={{ fill: "#111827", fontSize: 12, fontWeight: 600 }}
+                style={{ fill: "#828282", fontSize: 12, fontWeight: 600 }}
               />
             </Bar>
           </BarChart>
@@ -79,10 +79,12 @@ const PaymentIssuesChart = () => {
 
         <div className='mt-4 mb-2'>
           <p className='text-xs sm:text-sm'>
-            <span className='font-medium text-orange-500'>
+            <span className='font-semibold text-[#FFA14E]'>
               Total number of errors:
             </span>{" "}
-            <span className='font-bold text-orange-500'>{totalErrors}</span>
+            <span className='font-bold text-[#FFA14E] text-lg'>
+              {totalErrors}
+            </span>
           </p>
         </div>
 
@@ -95,7 +97,7 @@ const PaymentIssuesChart = () => {
               >
                 {item.category}
               </div>
-              <span className='text-gray-600 text-xs sm:text-sm'>
+              <span className='font-semibold text-[#828282] text-xs'>
                 {item.label}
               </span>
             </div>
