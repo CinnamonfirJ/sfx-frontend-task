@@ -9,7 +9,7 @@ const transactionData = [
   {
     id: "TXN001",
     date: "Mar 14, 2024",
-    customer: "John Doe",
+    customer: "Peter Japhet",
     amount: "₦50,000",
     status: "success",
     type: "Payment",
@@ -17,7 +17,7 @@ const transactionData = [
   {
     id: "TXN002",
     date: "Mar 14, 2024",
-    customer: "Jane Smith",
+    customer: "Leo Arome",
     amount: "₦75,500",
     status: "success",
     type: "Deposit",
@@ -25,7 +25,7 @@ const transactionData = [
   {
     id: "TXN003",
     date: "Mar 13, 2024",
-    customer: "Bob Johnson",
+    customer: "James Robinson",
     amount: "₦30,000",
     status: "pending",
     type: "Transfer",
@@ -33,7 +33,7 @@ const transactionData = [
   {
     id: "TXN004",
     date: "Mar 13, 2024",
-    customer: "Alice Brown",
+    customer: "Lupita Jonah",
     amount: "₦120,000",
     status: "failed",
     type: "Withdrawal",
@@ -41,7 +41,7 @@ const transactionData = [
   {
     id: "TXN005",
     date: "Mar 12, 2024",
-    customer: "Charlie Davis",
+    customer: "Sarah Mitchell",
     amount: "₦45,250",
     status: "success",
     type: "Payment",

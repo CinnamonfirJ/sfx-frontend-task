@@ -137,8 +137,8 @@ const Sidebar = () => {
           isOpen ? "w-64" : "w-20"
         }`}
       >
-        <div className='flex justify-between items-center p-4 border-gray-200 border-b'>
-          {isOpen && (
+        <Link href='/'>
+          <div className='flex justify-between items-center p-4 border-gray-200 border-b'>
             <Image
               src='/logo.svg'
               alt='Company Logo'
@@ -146,15 +146,19 @@ const Sidebar = () => {
               height={80}
               priority
             />
-          )}
-          <button onClick={() => setIsOpen(!isOpen)} className='p-2 rounded-lg'>
-            {isOpen ? (
-              <ChevronLeft size={20} fill='#BDBDBD' stroke='' />
-            ) : (
-              <ChevronRight size={20} fill='#BDBDBD' stroke='' />
-            )}
-          </button>
-        </div>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className='p-2 rounded-lg'
+            >
+              {isOpen ? (
+                <ChevronLeft size={20} fill='#BDBDBD' stroke='' />
+              ) : (
+                <ChevronRight size={20} fill='#BDBDBD' stroke='' />
+              )}
+            </button>
+          </div>
+        </Link>
 
         <SidebarContent />
       </aside>
