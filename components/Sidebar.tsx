@@ -54,8 +54,8 @@ const Sidebar = () => {
       title: "Payments",
       key: "payments",
       items: [
-        { icon: Send, label: "Transactions", href: "#" },
-        { icon: Users, label: "Customers", href: "#" },
+        { icon: Send, label: "Transactions", href: "transactions" },
+        { icon: Users, label: "Customers", href: "customers" },
         { icon: CreditCard, label: "Payouts", href: "#" },
         { icon: Wallet, label: "Balances", href: "#" },
         { icon: Repeat, label: "Subscriptions", href: "#" },
