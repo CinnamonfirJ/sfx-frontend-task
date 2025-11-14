@@ -1,0 +1,47 @@
+import { Variants } from "framer-motion";
+
+export const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      duration: 0.5,
+    },
+  },
+};
+
+export const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 120, damping: 20 } as any,
+  },
+};
+
+export const sidebarVariants: Variants = {
+  initial: { x: -80, opacity: 0 },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+export const navbarVariants: Variants = {
+  initial: { y: -300, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};

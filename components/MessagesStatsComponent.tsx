@@ -74,7 +74,7 @@ const MessagesStatsComponent = () => {
   ];
 
   return (
-    <div className='flex justify-center bg-[#F9F9F9] p-6 rounded-tl-[75px] min-h-screen'>
+    <div className='flex justify-center bg-[#F9F9F9] dark:bg-[#1F1F1F] p-6 rounded-tl-[75px] min-h-screen'>
       <div className='w-full max-w-md overflow-hidden'>
         {/* Tab Header */}
         <div className='flex border-gray-200 border-b'>
@@ -82,7 +82,7 @@ const MessagesStatsComponent = () => {
             onClick={() => setActiveTab("stats")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "stats"
-                ? "text-gray-900 border-b-2 border-gray-900"
+                ? "text-[#828282] dark:text-[#BDBDBD] border-b-2 border-gray-900"
                 : "text-gray-400"
             }`}
           >
@@ -92,7 +92,7 @@ const MessagesStatsComponent = () => {
             onClick={() => setActiveTab("messages")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "messages"
-                ? "text-gray-900 border-b-2 border-gray-900"
+                ? "text-[#828282] dark:text-[#BDBDBD] border-b-2 border-gray-900"
                 : "text-gray-400"
             }`}
           >
@@ -124,13 +124,13 @@ const MessagesStatsComponent = () => {
                 {/* Message Content */}
                 <div className='flex-1 w-full min-w-0'>
                   <div className='flex justify-between items-center mb-1'>
-                    <h3 className='font-semibold text-gray-900 text-sm'>
+                    <h3 className='font-semibold text-[#828282] dark:text-[#BDBDBD] text-sm'>
                       {msg.name}
                     </h3>
                     {/* Chevron */}
                     <ChevronRight className='w-5 h-5 text-gray-400 shrink-0' />
                   </div>
-                  <p className='text-gray-500 text-sm truncate'>
+                  <p className='text-gray-500 dark:text-gray-400 text-sm truncate'>
                     {msg.message}
                   </p>
                 </div>
@@ -141,7 +141,7 @@ const MessagesStatsComponent = () => {
 
         {/* Stats View */}
         {activeTab === "stats" && (
-          <div className='p-8 h-[600px] text-gray-500 text-center'>
+          <div className='p-8 h-[600px] text-gray-500 dark:text-gray-400 text-center'>
             <p>No stats available.</p>
           </div>
         )}

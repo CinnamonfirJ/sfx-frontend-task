@@ -17,6 +17,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/context/SidebarContext";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
+import { motion } from "framer-motion";
+import { navbarVariants } from "@/lib/framerConstants";
 
 const Navbar = () => {
   const [lang, setLang] = useState("english");
@@ -29,7 +32,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className='px-4 sm:px-6 lg:px-8 py-3 sm:py-4'>
+    <motion.div
+      initial='initial'
+      animate='animate'
+      variants={navbarVariants}
+      className='px-4 sm:px-6 lg:px-8 py-3 sm:py-4'
+    >
       <div className='hidden lg:flex justify-between items-center'>
         <div className='flex-1'>
           <div className='relative w-full max-w-xs'>
@@ -56,7 +64,7 @@ const Navbar = () => {
                 }`}
               />
             </button>
-            <span className='text-[#828282] text-sm transition-colors duration-300'>
+            <span className='text-[#828282] dark:text-[#BDBDBD] text-sm transition-colors duration-300'>
               {isLive ? "Live" : "Offline"}
             </span>
           </div>
@@ -78,8 +86,9 @@ const Navbar = () => {
             <Bell fill='#828282' stroke='#828282' />
             <div className='-top-1/2 left-5 absolute bg-[#E5A0FF] rounded-full w-3 h-3' />
           </div>
+          <ModeToggle />
 
-          <div className='flex items-center gap-3 p-2 text-[#828282]'>
+          <div className='flex items-center gap-3 p-2 text-[#828282] dark:text-[#BDBDBD]'>
             <Avatar>
               <AvatarImage src='/user.png' />
               <AvatarFallback>CN</AvatarFallback>
@@ -170,7 +179,9 @@ const Navbar = () => {
               </div>
 
               <div className='flex justify-between items-center'>
-                <span className='text-[#828282] text-sm'>Status</span>
+                <span className='text-[#828282] dark:text-[#BDBDBD] text-sm'>
+                  Status
+                </span>
                 <div className='flex items-center space-x-3'>
                   <button
                     onClick={() => setIsLive(!isLive)}
@@ -184,14 +195,16 @@ const Navbar = () => {
                       }`}
                     />
                   </button>
-                  <span className='text-[#828282] text-sm'>
+                  <span className='text-[#828282] dark:text-[#BDBDBD] text-sm'>
                     {isLive ? "Live" : "Offline"}
                   </span>
                 </div>
               </div>
 
               <div className='flex justify-between items-center'>
-                <span className='text-[#828282] text-sm'>Language</span>
+                <span className='text-[#828282] dark:text-[#BDBDBD] text-sm'>
+                  Language
+                </span>
                 <NativeSelect
                   className='rounded-full w-32'
                   value={lang}
@@ -207,7 +220,9 @@ const Navbar = () => {
               </div>
 
               <div className='flex justify-between items-center'>
-                <span className='text-[#828282] text-sm'>Notifications</span>
+                <span className='text-[#828282] dark:text-[#BDBDBD] text-sm'>
+                  Notifications
+                </span>
                 <div className='relative flex items-center'>
                   <Bell fill='#828282' stroke='#828282' className='w-5 h-5' />
                   <div className='-top-1 -right-1 absolute bg-[#E5A0FF] rounded-full w-3 h-3' />
@@ -231,10 +246,11 @@ const Navbar = () => {
                 <div className='-top-1 -right-1 absolute bg-[#E5A0FF] rounded-full w-2.5 h-2.5' />
               </div>
 
-              <Avatar className='w-8 h-8'>
+              <ModeToggle />
+              {/* <Avatar className='w-8 h-8'>
                 <AvatarImage src='/user.png' />
                 <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+              </Avatar> */}
             </div>
 
             <div className='flex items-center gap-2'>
@@ -243,14 +259,14 @@ const Navbar = () => {
                   isLive ? "bg-[#6FCF97]" : "bg-[#828282]"
                 }`}
               />
-              <span className='text-[#828282] text-xs'>
+              <span className='text-[#828282] dark:text-[#BDBDBD] text-xs'>
                 {isLive ? "Live" : "Offline"}
               </span>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

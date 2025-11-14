@@ -100,7 +100,9 @@ const RadialChartComponent = () => {
                 {chartData[0].unsuccessful}
               </span>
             </div>
-            <span className='font-semibold text-[#828282]'>Unsuccessful</span>
+            <span className='font-semibold text-[#828282] dark:text-[#BDBDBD]'>
+              Unsuccessful
+            </span>
           </div>
           <div className='flex flex-col items-center gap-1.5 sm:gap-2'>
             <div className='flex justify-center items-center gap-2 w-full'>
@@ -109,7 +111,9 @@ const RadialChartComponent = () => {
                 {chartData[0].successful}
               </span>
             </div>
-            <span className='font-semibold text-[#828282]'>Successful</span>
+            <span className='font-semibold text-[#828282] dark:text-[#BDBDBD]'>
+              Successful
+            </span>
           </div>
         </div>
       </CardContent>

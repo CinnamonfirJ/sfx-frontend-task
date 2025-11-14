@@ -37,7 +37,7 @@ const PaymentIssuesChart = () => {
   return (
     <Card className='flex flex-col rounded-3xl w-full h-full'>
       <CardHeader className='pb-4'>
-        <CardTitle className='font-semibold text-gray-900 text-base sm:text-lg'>
+        <CardTitle className='font-semibold text-[#828282] dark:text-[#BDBDBD] text-base sm:text-lg'>
           Payment issues
         </CardTitle>
       </CardHeader>
@@ -97,7 +97,7 @@ const PaymentIssuesChart = () => {
               >
                 {item.category}
               </div>
-              <span className='font-semibold text-[#828282] text-xs'>
+              <span className='font-semibold text-[#828282] dark:text-[#BDBDBD] text-xs'>
                 {item.label}
               </span>
             </div>

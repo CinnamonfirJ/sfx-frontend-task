@@ -69,7 +69,9 @@ export default function CustomersTable() {
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className='font-semibold text-gray-900'>{name}</p>
+            <p className='font-semibold text-[#828282] dark:text-[#BDBDBD]'>
+              {name}
+            </p>
           </div>
         </div>
       ),

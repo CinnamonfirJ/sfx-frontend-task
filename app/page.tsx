@@ -1,55 +1,85 @@
+"use client";
+
+import { motion } from "framer-motion";
 import BarChartComponent from "@/components/BarChartComponent";
 import MessagesStatsComponent from "@/components/MessagesStatsComponent";
 import PaymentIssuesChart from "@/components/PaymentIssuesChart";
 import RadialChartComponent from "@/components/RadialChartComponent";
 import { ChevronDownIcon } from "lucide-react";
 import React from "react";
+import { containerVariants, itemVariants } from "@/lib/framerConstants";
 
 const Home = () => {
   return (
-    <div className='px-4 sm:px-6 lg:px-8 py-4 sm:py-6 w-full'>
+    <motion.div
+      className='px-4 sm:px-6 lg:px-8 py-4 sm:py-6 w-full'
+      initial='hidden'
+      animate='visible'
+      variants={containerVariants}
+    >
       <div className='flex lg:flex-row flex-col justify-center gap-4 mx-auto max-w-[1600px]'>
         {/* Main Content Area */}
         <div className='flex flex-col flex-1 gap-4 sm:gap-5 lg:gap-6'>
           {/* Header Section */}
-          <div className='space-y-2 sm:space-y-3'>
-            <h3 className='font-bold text-[#FFA14E] text-base sm:text-lg'>
+          <motion.div
+            className='space-y-2 sm:space-y-3'
+            variants={itemVariants}
+          >
+            <motion.h3
+              className='font-bold text-[#FFA14E] text-base sm:text-lg'
+              variants={itemVariants}
+            >
               👋 Hey Martins!
-            </h3>
-            <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl leading-tight'>
+            </motion.h3>
+            <motion.h1
+              className='font-bold text-xl sm:text-2xl lg:text-3xl leading-tight'
+              variants={itemVariants}
+            >
               You earned NGN 3,000,000 this month.
-            </h1>
-          </div>
+            </motion.h1>
+          </motion.div>
 
-          <div className='inline-flex items-center gap-3 px-3 py-1.5 font-semibold text-[#828282]'>
+          <motion.div
+            className='inline-flex items-center gap-3 px-3 py-1.5 font-semibold text-[#828282] dark:text-[#BDBDBD]'
+            variants={itemVariants}
+          >
             <span>Last 30 days</span>
-            <div className='flex justify-center items-center bg-[#FAF2FF] rounded-md w-7 h-7'>
+            <div className='flex justify-center items-center bg-[#FAF2FF] dark:bg-[#3B1C44] rounded-md w-7 h-7'>
               <ChevronDownIcon className='fill-[#BB6BD9] text-sm' />
             </div>
-          </div>
+          </motion.div>
 
           {/* Bar Chart Section */}
-          <div className='w-full'>
+          <motion.div className='w-full' variants={itemVariants}>
             <BarChartComponent />
-          </div>
+          </motion.div>
 
           {/* Two Column Charts Section */}
-          <div className='gap-4 sm:gap-6 grid grid-cols-1 xl:grid-cols-2'>
-            <div className='bg-white rounded-lg overflow-hidden'>
+          <motion.div className='gap-4 sm:gap-6 grid grid-cols-1 xl:grid-cols-2'>
+            <motion.div
+              className='rounded-lg overflow-hidden'
+              variants={itemVariants}
+            >
               <RadialChartComponent />
-            </div>
-            <div className='bg-white rounded-lg overflow-hidden'>
+            </motion.div>
+            <motion.div
+              className='rounded-lg overflow-hidden'
+              variants={itemVariants}
+            >
               <PaymentIssuesChart />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Sidebar Section */}
-        <div className='w-full lg:w-80 xl:w-96 shrink-0'>
+        <motion.div
+          className='w-full lg:w-80 xl:w-96 shrink-0'
+          variants={itemVariants}
+        >
           <MessagesStatsComponent />
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

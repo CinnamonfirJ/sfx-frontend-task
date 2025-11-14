@@ -49,16 +49,16 @@ export default function SettingsPanel() {
               className='border-gray-200'
             />
           </div>
-          <Button className='bg-purple-600 hover:bg-purple-700 text-white'>
+          <Button className='bg-[#8b52ff] hover:bg-purple-700 text-white'>
             Save Changes
           </Button>
         </CardContent>
       </Card>
 
       {/* Notifications */}
-      <Card className='border-gray-200'>
+      <Card className='bg-white dark:bg-[#1F1F1F] border-gray-200 dark:border-gray-700'>
         <CardHeader>
-          <CardTitle className='flex items-center gap-2'>
+          <CardTitle className='flex items-center gap-2 text-gray-700 dark:text-gray-100'>
             <Bell size={20} />
             Notifications
           </CardTitle>
@@ -83,11 +83,15 @@ export default function SettingsPanel() {
           ].map((notif) => (
             <div
               key={notif.key}
-              className='flex justify-between items-center bg-gray-50 p-3 rounded-lg'
+              className='flex justify-between items-center bg-gray-50 dark:bg-gray-800 p-3 rounded-lg transition-colors'
             >
               <div>
-                <p className='font-medium text-gray-900'>{notif.label}</p>
-                <p className='text-gray-600 text-sm'>{notif.desc}</p>
+                <p className='font-medium text-gray-600 dark:text-gray-300'>
+                  {notif.label}
+                </p>
+                <p className='text-gray-500 dark:text-gray-400 text-sm'>
+                  {notif.desc}
+                </p>
               </div>
               <button
                 onClick={() =>
@@ -97,14 +101,14 @@ export default function SettingsPanel() {
                       !notifications[notif.key as keyof typeof notifications],
                   })
                 }
-                className={`relative inline-flex h-6 w-10 items-center rounded-full transition-colors ${
+                className={`relative inline-flex h-6 w-10 items-center rounded-full transition-colors duration-300 ${
                   notifications[notif.key as keyof typeof notifications]
-                    ? "bg-purple-600"
-                    : "bg-gray-300"
+                    ? "bg-[#8b52ff] dark:bg-[#6c2eea]"
+                    : "bg-gray-300 dark:bg-gray-600"
                 }`}
               >
                 <span
-                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform duration-300 ${
                     notifications[notif.key as keyof typeof notifications]
                       ? "translate-x-4"
                       : "translate-x-0.5"

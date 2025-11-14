@@ -22,6 +22,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import { sidebarVariants } from "@/lib/framerConstants";
 
 interface MenuItem {
   icon: LucideIcon;
@@ -82,7 +84,7 @@ const Sidebar = () => {
           {/* Section Header */}
           <button
             onClick={() => toggleDropdown(section.key)}
-            className='flex justify-between items-center w-full font-bold text-[#828282] tracking-wide'
+            className='flex justify-between items-center w-full font-bold text-[#828282] dark:text-[#BDBDBD] tracking-wide'
           >
             <span
               className={`transition-opacity duration-200 ${
@@ -109,7 +111,9 @@ const Sidebar = () => {
                     key={idx}
                     href={item.href}
                     className={`flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-lg font-medium ${
-                      isActive ? "text-[#8c52ff]" : "text-[#828282]"
+                      isActive
+                        ? "text-[#8c52ff]"
+                        : "text-[#828282] dark:text-[#BDBDBD]"
                     } text-sm transition-colors`}
                   >
                     <item.icon size={18} className='shrink-0' />
@@ -130,38 +134,39 @@ const Sidebar = () => {
   );
 
   return (
-    <aside>
+    <aside className='top-0 z-50 sticky h-screen'>
       {/* Desktop Sidebar */}
-      <aside
-        className={`hidden md:flex flex-col bg-white border-r border-gray-200 transition-all duration-300 ${
+      <motion.aside
+        initial='initial'
+        animate='animate'
+        variants={sidebarVariants}
+        className={`hidden h-full md:flex flex-col  border-r border-gray-200 transition-all duration-300 ${
           isOpen ? "w-64" : "w-20"
         }`}
       >
-        <Link href='/'>
-          <div className='flex justify-between items-center p-4 border-gray-200 border-b'>
-            <Image
-              src='/logo.svg'
-              alt='Company Logo'
-              width={80}
-              height={80}
-              priority
-            />
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className='p-2 rounded-lg'
-            >
-              {isOpen ? (
-                <ChevronLeft size={20} fill='#BDBDBD' stroke='' />
-              ) : (
-                <ChevronRight size={20} fill='#BDBDBD' stroke='' />
-              )}
-            </button>
-          </div>
-        </Link>
+        <div className='flex justify-between items-center p-4 border-gray-200 border-b'>
+          {isOpen && (
+            <Link href='/'>
+              <Image
+                src='/logo.svg'
+                alt='Company Logo'
+                width={80}
+                height={80}
+                priority
+              />
+            </Link>
+          )}
+          <button onClick={() => setIsOpen(!isOpen)} className='p-2 rounded-lg'>
+            {isOpen ? (
+              <ChevronLeft size={20} fill='#BDBDBD' stroke='' />
+            ) : (
+              <ChevronRight size={20} fill='#BDBDBD' stroke='' />
+            )}
+          </button>
+        </div>
 
         <SidebarContent />
-      </aside>
+      </motion.aside>
 
       {/* Mobile Overlay */}
       {isMobileOpen && (
@@ -173,7 +178,7 @@ const Sidebar = () => {
 
       {/* Mobile Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-[#0a0a0a] z-50 transform transition-transform duration-300 md:hidden ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
