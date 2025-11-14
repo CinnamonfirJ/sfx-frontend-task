@@ -68,7 +68,7 @@ const Sidebar = () => {
       items: [
         { icon: Share2, label: "Referrals", href: "#" },
         { icon: Eye, label: "Audit logs", href: "#" },
-        { icon: Settings, label: "Settings", href: "#" },
+        { icon: Settings, label: "Settings", href: "settings" },
       ],
     },
   ];
