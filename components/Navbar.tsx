@@ -71,7 +71,7 @@ const Navbar = () => {
 
           <div>
             <NativeSelect
-              className='rounded-full'
+              className='bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 w-32 text-gray-800 dark:text-gray-100'
               value={lang}
               onChange={handleChange}
             >
@@ -96,7 +96,7 @@ const Navbar = () => {
 
             <div className='text-left'>
               <p className='font-medium text-sm'>Martins Chidume</p>
-              <span className='font-medium text-[#BDBDBD] text-sm'>
+              <span className='font-medium text-[#828282] dark:text-[#BDBDBD] text-sm'>
                 ID: 1234567
               </span>
             </div>
@@ -150,30 +150,40 @@ const Navbar = () => {
         </div>
 
         {showMobileMenu && (
-          <div className='top-full left-0 z-50 bg-white shadow-lg p-4 border border-gray-200 rounded-lg w-full'>
+          <div className='top-full left-0 z-50 shadow-lg p-4 border border-gray-200 rounded-lg w-full'>
             <div className='space-y-4'>
               <div className='flex items-center gap-3 pb-4 border-gray-200 border-b'>
                 <Avatar className='w-10 h-10'>
                   <AvatarImage src='/user.png' />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <div className='flex-1'>
+                <div className='text-left'>
                   <p className='font-medium text-sm'>Martins Chidume</p>
-                  <span className='font-medium text-[#BDBDBD] text-xs'>
+                  <span className='font-medium text-[#828282] dark:text-[#BDBDBD] text-sm'>
                     ID: 1234567
                   </span>
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger>
-                    <ChevronDownIcon className='w-4 h-4' aria-hidden='true' />
+                    <ChevronDownIcon aria-hidden='true' />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>
+                      <Link href='/settings'>Account Settings</Link>
+                    </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href='/transactions'>Transactions</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href='/customers'>Customers</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href='/payouts'>Payouts</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href='/balances'>Balances</Link>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -206,7 +216,7 @@ const Navbar = () => {
                   Language
                 </span>
                 <NativeSelect
-                  className='rounded-full w-32'
+                  className='bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 w-32 text-gray-800 dark:text-gray-100'
                   value={lang}
                   onChange={handleChange}
                 >

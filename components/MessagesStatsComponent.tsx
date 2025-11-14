@@ -77,13 +77,13 @@ const MessagesStatsComponent = () => {
     <div className='flex justify-center bg-[#F9F9F9] dark:bg-[#1F1F1F] p-6 rounded-tl-[75px] min-h-screen'>
       <div className='w-full max-w-md overflow-hidden'>
         {/* Tab Header */}
-        <div className='flex border-gray-200 border-b'>
+        <div className='flex border-gray-200 dark:border-gray-700 border-b'>
           <button
             onClick={() => setActiveTab("stats")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "stats"
-                ? "text-[#828282] dark:text-[#BDBDBD] border-b-2 border-gray-900"
-                : "text-gray-400"
+                ? "text-gray-800 dark:text-gray-100 border-b-2 border-gray-900 dark:border-gray-100"
+                : "text-gray-400 dark:text-gray-500"
             }`}
           >
             Stats
@@ -92,8 +92,8 @@ const MessagesStatsComponent = () => {
             onClick={() => setActiveTab("messages")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "messages"
-                ? "text-[#828282] dark:text-[#BDBDBD] border-b-2 border-gray-900"
-                : "text-gray-400"
+                ? "text-gray-800 dark:text-gray-100 border-b-2 border-gray-900 dark:border-gray-100"
+                : "text-gray-400 dark:text-gray-500"
             }`}
           >
             Messages
@@ -106,7 +106,7 @@ const MessagesStatsComponent = () => {
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className='flex flex-col items-center gap-3 bg-white p-5 rounded-3xl w-full max-w-[230px] cursor-pointer'
+                className='flex flex-col items-center gap-3 bg-white dark:bg-gray-800 shadow-sm dark:shadow-none p-5 rounded-3xl w-full max-w-[230px] cursor-pointer'
               >
                 <div className='flex justify-between items-center w-full'>
                   {/* Avatar */}
@@ -118,17 +118,19 @@ const MessagesStatsComponent = () => {
                     </span>
                   </div>
 
-                  <span className='ml-2 text-gray-400 text-xs'>{msg.time}</span>
+                  <span className='ml-2 text-gray-400 dark:text-gray-500 text-xs'>
+                    {msg.time}
+                  </span>
                 </div>
 
                 {/* Message Content */}
                 <div className='flex-1 w-full min-w-0'>
                   <div className='flex justify-between items-center mb-1'>
-                    <h3 className='font-semibold text-[#828282] dark:text-[#BDBDBD] text-sm'>
+                    <h3 className='font-semibold text-gray-800 dark:text-gray-100 text-sm truncate'>
                       {msg.name}
                     </h3>
                     {/* Chevron */}
-                    <ChevronRight className='w-5 h-5 text-gray-400 shrink-0' />
+                    <ChevronRight className='w-5 h-5 text-gray-400 dark:text-gray-500 shrink-0' />
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm truncate'>
                     {msg.message}

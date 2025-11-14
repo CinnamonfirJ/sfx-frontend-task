@@ -183,13 +183,15 @@ const Sidebar = () => {
         }`}
       >
         <div className='flex justify-between items-center p-4 border-gray-200 border-b'>
-          <Image
-            src='/logo.svg'
-            alt='Company Logo'
-            width={80}
-            height={80}
-            priority
-          />
+          <Link href='/'>
+            <Image
+              src='/logo.svg'
+              alt='Company Logo'
+              width={80}
+              height={80}
+              priority
+            />
+          </Link>
           <button
             onClick={() => setIsMobileOpen(false)}
             className='hover:bg-gray-100 p-2 rounded-lg text-gray-600'
