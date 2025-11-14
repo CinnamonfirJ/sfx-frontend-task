@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/context/SidebarContext";
+import Link from "next/link";
 
 const Navbar = () => {
   const [lang, setLang] = useState("english");
@@ -96,12 +97,22 @@ const Navbar = () => {
                 <ChevronDownIcon aria-hidden='true' />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>
+                  <Link href='/settings'>Account Settings</Link>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/transactions'>Transactions</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/customers'>Customers</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/payouts'>Payouts</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href='/balances'>Balances</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

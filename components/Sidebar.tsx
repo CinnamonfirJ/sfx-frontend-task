@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface MenuItem {
   icon: LucideIcon;
@@ -36,6 +37,7 @@ interface MenuSection {
 
 const Sidebar = () => {
   const { isOpen, setIsOpen, isMobileOpen, setIsMobileOpen } = useSidebar();
+  const pathname = usePathname();
 
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({
     payments: true,
@@ -56,18 +58,18 @@ const Sidebar = () => {
       items: [
         { icon: Send, label: "Transactions", href: "transactions" },
         { icon: Users, label: "Customers", href: "customers" },
-        { icon: CreditCard, label: "Payouts", href: "#" },
-        { icon: Wallet, label: "Balances", href: "#" },
-        { icon: Repeat, label: "Subscriptions", href: "#" },
-        { icon: Calendar, label: "Payment plans", href: "#" },
+        { icon: CreditCard, label: "Payouts", href: "payouts" },
+        { icon: Wallet, label: "Balances", href: "balances" },
+        { icon: Repeat, label: "Subscriptions", href: "/" },
+        { icon: Calendar, label: "Payment plans", href: "/" },
       ],
     },
     {
       title: "Commerce",
       key: "commerce",
       items: [
-        { icon: Share2, label: "Referrals", href: "#" },
-        { icon: Eye, label: "Audit logs", href: "#" },
+        { icon: Share2, label: "Referrals", href: "/" },
+        { icon: Eye, label: "Audit logs", href: "/" },
         { icon: Settings, label: "Settings", href: "settings" },
       ],
     },
@@ -100,20 +102,25 @@ const Sidebar = () => {
           {/* Section Items */}
           {openDropdowns[section.key] && (
             <div className='space-y-1 mt-2'>
-              {section.items.map((item, idx) => (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  className='flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-lg font-medium text-[#828282] text-sm transition-colors'
-                >
-                  <item.icon size={18} className='shrink-0' />
-                  {isOpen && (
-                    <span className='transition-opacity duration-300'>
-                      {item.label}
-                    </span>
-                  )}
-                </Link>
-              ))}
+              {section.items.map((item, idx) => {
+                const isActive = pathname === `/${item.href}`;
+                return (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    className={`flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-lg font-medium ${
+                      isActive ? "text-[#8c52ff]" : "text-[#828282]"
+                    } text-sm transition-colors`}
+                  >
+                    <item.icon size={18} className='shrink-0' />
+                    {isOpen && (
+                      <span className='transition-opacity duration-300'>
+                        {item.label}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           )}
           <hr className='my-3 border-gray-200' />
