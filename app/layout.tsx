@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "./providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -29,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
+        className={`${montserrat.variable}  antialiased overflow-x-hidden flex`}
       >
         <ThemeProvider
           attribute='class'
@@ -40,8 +36,11 @@ export default function RootLayout({
           <SidebarProvider>
             <Sidebar />
             <main className='w-full'>
-              <Navbar />
-              <div> {children}</div>
+              <Providers>
+                <Navbar />
+
+                <div> {children}</div>
+              </Providers>
             </main>
           </SidebarProvider>
         </ThemeProvider>

@@ -20,12 +20,15 @@ import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 import { motion } from "framer-motion";
 import { navbarVariants } from "@/lib/framerConstants";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
 
 const Navbar = () => {
   const [lang, setLang] = useState("english");
   const [isLive, setIsLive] = useState(true);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { setIsMobileOpen } = useSidebar();
+  const { address, isConnected } = useAccount();
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setLang(e.target.value);
@@ -76,8 +79,8 @@ const Navbar = () => {
               onChange={handleChange}
             >
               <NativeSelectOption value='english'>English</NativeSelectOption>
-              <NativeSelectOption value='hausa'>Hausa</NativeSelectOption>
-              <NativeSelectOption value='yoruba'>Yoruba</NativeSelectOption>
+              <NativeSelectOption value='turkish'>Turkish</NativeSelectOption>
+              <NativeSelectOption value='greek'>Greek</NativeSelectOption>
               <NativeSelectOption value='igbo'>Igbo</NativeSelectOption>
             </NativeSelect>
           </div>
@@ -99,6 +102,11 @@ const Navbar = () => {
               <span className='font-medium text-[#828282] dark:text-[#BDBDBD] text-sm'>
                 ID: 1234567
               </span>
+              {isConnected && (
+                <p className='mt-1 font-medium text-[#4F46E5] text-sm'>
+                  Wallet: {address?.slice(0, 6)}...{address?.slice(-4)}
+                </p>
+              )}
             </div>
 
             <DropdownMenu>
@@ -121,6 +129,15 @@ const Navbar = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href='/balances'>Balances</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <div className='flex justify-center w-full'>
+                    <ConnectButton
+                      showBalance={false}
+                      accountStatus='address'
+                      chainStatus='none'
+                    />
+                  </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -162,6 +179,11 @@ const Navbar = () => {
                   <span className='font-medium text-[#828282] dark:text-[#BDBDBD] text-sm'>
                     ID: 1234567
                   </span>
+                  {isConnected && (
+                    <p className='mt-1 font-medium text-[#4F46E5] text-sm'>
+                      Wallet: {address?.slice(0, 6)}...{address?.slice(-4)}
+                    </p>
+                  )}
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger>
@@ -183,6 +205,15 @@ const Navbar = () => {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href='/balances'>Balances</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <div className='flex justify-center w-full'>
+                        <ConnectButton
+                          showBalance={false}
+                          accountStatus='address'
+                          chainStatus='none'
+                        />
+                      </div>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -223,8 +254,10 @@ const Navbar = () => {
                   <NativeSelectOption value='english'>
                     English
                   </NativeSelectOption>
-                  <NativeSelectOption value='hausa'>Hausa</NativeSelectOption>
-                  <NativeSelectOption value='yoruba'>Yoruba</NativeSelectOption>
+                  <NativeSelectOption value='turkish'>
+                    Turkish
+                  </NativeSelectOption>
+                  <NativeSelectOption value='greek'>Greek</NativeSelectOption>
                   <NativeSelectOption value='igbo'>Igbo</NativeSelectOption>
                 </NativeSelect>
               </div>

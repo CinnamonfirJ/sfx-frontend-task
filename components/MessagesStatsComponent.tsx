@@ -74,7 +74,7 @@ const MessagesStatsComponent = () => {
   ];
 
   return (
-    <div className='flex justify-center bg-[#F9F9F9] dark:bg-[#1F1F1F] p-6 rounded-tl-[75px] min-h-screen'>
+    <div className='top-0 sticky flex justify-center bg-[#F9F9F9] dark:bg-[#1F1F1F] p-6 rounded-tl-[75px] min-h-screen'>
       <div className='w-full max-w-md overflow-hidden'>
         {/* Tab Header */}
         <div className='flex border-gray-200 dark:border-gray-700 border-b'>
@@ -102,7 +102,7 @@ const MessagesStatsComponent = () => {
 
         {/* Messages List */}
         {activeTab === "messages" && (
-          <div className='flex flex-col items-center gap-5 py-4 md:h-full max-h-[600px] overflow-y-auto'>
+          <div className='flex flex-col items-center gap-5 py-4 md:h-full max-h-screen overflow-y-auto'>
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -143,7 +143,7 @@ const MessagesStatsComponent = () => {
 
         {/* Stats View */}
         {activeTab === "stats" && (
-          <div className='p-8 h-[600px] text-gray-500 dark:text-gray-400 text-center'>
+          <div className='p-8 h-screen text-gray-500 dark:text-gray-400 text-center'>
             <p>No stats available.</p>
           </div>
         )}

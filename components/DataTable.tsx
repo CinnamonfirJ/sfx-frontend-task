@@ -16,6 +16,7 @@ interface DataTableProps {
   onRowClick?: (row: any) => void;
   searchPlaceholder?: string;
   itemsPerPage?: number;
+  extraColumns?: Column[];
 }
 
 export function DataTable({
@@ -24,6 +25,7 @@ export function DataTable({
   onRowClick,
   searchPlaceholder = "Search...",
   itemsPerPage = 10,
+  extraColumns = [],
 }: DataTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,6 +39,8 @@ export function DataTable({
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
+
+  const allColumns = [...columns, ...extraColumns];
 
   return (
     <div className='space-y-4 w-full'>
@@ -60,7 +64,7 @@ export function DataTable({
         <table className='w-full'>
           <thead className='bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 border-b'>
             <tr>
-              {columns.map((col) => (
+              {allColumns.map((col) => (
                 <th
                   key={col.key}
                   className='px-6 py-3 font-semibold text-gray-600 dark:text-gray-400 text-xs text-left'
@@ -77,7 +81,7 @@ export function DataTable({
                 onClick={() => onRowClick?.(row)}
                 className='hover:bg-gray-50 dark:hover:bg-gray-900 border-gray-100 dark:border-gray-700 border-b transition-colors cursor-pointer'
               >
-                {columns.map((col) => (
+                {allColumns.map((col) => (
                   <td
                     key={col.key}
                     className='px-6 py-4 text-gray-700 dark:text-gray-200 text-sm whitespace-nowrap'
