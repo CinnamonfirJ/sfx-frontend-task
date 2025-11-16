@@ -84,7 +84,7 @@ export function DataTable({
                 {allColumns.map((col) => (
                   <td
                     key={col.key}
-                    className='px-6 py-4 text-gray-700 dark:text-gray-200 text-sm whitespace-nowrap'
+                    className='px-6 py-4 max-w-[150px] text-gray-700 dark:text-gray-200 text-sm truncate'
                   >
                     {col.render ? col.render(row[col.key], row) : row[col.key]}
                   </td>
