@@ -54,7 +54,6 @@ const Home = () => {
             <BarChartComponent />
           </motion.div>
 
-          {/* Two Column Charts Section */}
           <motion.div className='gap-4 sm:gap-6 grid grid-cols-1 xl:grid-cols-2'>
             <motion.div
               className='rounded-lg overflow-hidden'
@@ -73,7 +72,7 @@ const Home = () => {
 
         {/* Sidebar Section */}
         <motion.div
-          className='w-full lg:w-80 xl:w-96 shrink-0'
+          className='w-full lg:w-80 xl:w-[500px] shrink-0'
           variants={itemVariants}
         >
           <MessagesStatsComponent />

@@ -106,7 +106,7 @@ const MessagesStatsComponent = () => {
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className='flex flex-col items-center gap-3 bg-white dark:bg-gray-800 shadow-sm dark:shadow-none p-5 rounded-3xl w-full max-w-[230px] cursor-pointer'
+                className='flex flex-col items-center gap-3 bg-white dark:bg-gray-800 shadow-sm dark:shadow-none p-5 rounded-3xl w-full max-w-[300px] cursor-pointer'
               >
                 <div className='flex justify-between items-center w-full'>
                   {/* Avatar */}
